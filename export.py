@@ -104,6 +104,7 @@ def export_torchscript(model, im, file, optimize, prefix=colorstr('TorchScript:'
             (optimize_for_mobile(ts) if optimize else ts)._save_for_lite_interpreter(str(fl))
         else:
             ts.save(str(f), _extra_files=extra_files)
+            ts.save(str(fl), _extra_files=extra_files)
 
         LOGGER.info(f'{prefix} export success, saved as {f} ({file_size(f):.1f} MB)')
         return f
